@@ -4,11 +4,11 @@ import config from '../config/config';
 const api = {
     async request(method, endpoint, data = null, params = {}) {
       try {
-        const requestParams = { ...params, api_key: config.apiKey };
+        const requestParams = { ...params, api_key: config.smartVendApiKey };
         
         const response = await axios({
           method,
-          url: `${config.baseUrl}${endpoint}`,
+          url: `${config.smartVendBaseUrl}${endpoint}`,
           data: data,
           params: requestParams
         });

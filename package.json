@@ -17,7 +17,8 @@
       "main.js"
     ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "sign": null
     },
     "mac": {
       "target": "dmg"

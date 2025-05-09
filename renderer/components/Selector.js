@@ -6,29 +6,28 @@ import minusIcon from '../assets/minus.svg';
 const Selector = ({title, value, setValue}) => {
     const styles = StyleSheet.create({
         title:{
-            fontSize: 24,
+            fontSize: 25,
             fontWeight: 'bold',
             color: '#333',
             textAlign: 'center'
         },
         container:{
             marginTop: 20,
-            marginBottom: 20,
             display: 'flex',
             alignItems: 'center'
         },
         buttons:{
             width: 400,
-            padding: 20,
+            padding: 10,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center'
         },
         button:{
-            width: 100,
-            height: 100,
-            borderRadius: 50,
+            width: 70,
+            height: 70,
+            borderRadius: 35,
             backgroundColor: '#f0f0f0',
             display: 'flex',
             justifyContent: 'center',
@@ -37,12 +36,12 @@ const Selector = ({title, value, setValue}) => {
             borderColor: '#ccc'
         },
         buttonIn:{
-            width: 50,
-            height: 50,
+            width: 40,
+            height: 40,
             resizeMode: 'contain'
         },
         value:{
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: 'bold',
             color: '#333'
         }

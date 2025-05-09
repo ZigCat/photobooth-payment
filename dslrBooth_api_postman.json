@@ -1,0 +1,1070 @@
+{
+	"info": {
+		"_postman_id": "716f1e20-6656-4a05-9802-c5d924b61eca",
+		"name": "dslrBooth for Windows API documentation",
+		"description": "You can use the dslrBooth API to communicate and send commands to dslrBooth. dslrBooth automatically generates a random password that you will have to specify in the URL for each command you send as a **password** GET parameter.\n\nThe API allows you to run the following commands:\n\n*   Start a Print/GIF/Boomerang/Video session\n*   Show/Exit the lock screen\n*   Print a specific number of copies\n*   Share an email/SMS with the final print or video\n    \n\nDon’t forget to append and use the **password** parameter with the password that dslrBooth generates for your booth.\n\n[Let us know](https://support.lumasoft.co) if you need the API to do something else as well.\n\n**Requirements**\n\n*   dslrBooth Professional for Windows v6.40 or later.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10647705"
+	},
+	"item": [
+		{
+			"name": "Start a Session",
+			"item": [
+				{
+					"name": "Start a Session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=print",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"start"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "print"
+								}
+							]
+						},
+						"description": "Use these method to start a session with a specific booth mode (print/gif/boomerang/video). dslrBooth must be on the start screen or you'll get an error back.\n\nThe API won’t be able to start a session that isn’t enabled in the booth configuration."
+					},
+					"response": [
+						{
+							"name": "Print session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=print",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "print"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "9"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"start?mode=print\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "GIF session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=gif",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "gif"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "12"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"start?mode=gif\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Video session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=video",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "video"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "13"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"start?mode=video\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Boomerang session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start/boomerang",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start",
+										"boomerang"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "17"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"start?mode=boomerang\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Error - Not on Start Screen",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=print",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "print"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "10"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"start?mode=print\",\n    \"IsSuccessful\": false,\n    \"ErrorMessage\": \"The booth is not on the start screen to start a session\"\n}"
+						},
+						{
+							"name": "Error - Booth mode is not enabled",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=print",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "print"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"start?mode=print\",\r\n    \"IsSuccessful\": false,\r\n    \"ErrorMessage\": \"Print is not an enabled booth mode. Enable in app settings.\"\r\n}"
+						},
+						{
+							"name": "Error - The booth is locked",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/start?mode=print",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"start"
+									],
+									"query": [
+										{
+											"key": "mode",
+											"value": "print"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"start?mode=print\",\r\n    \"IsSuccessful\": false,\r\n    \"ErrorMessage\": \"The booth is locked\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Share",
+			"item": [
+				{
+					"name": "Print",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/print?count=1",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"print"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "1"
+								}
+							]
+						},
+						"description": "To print a specific number of copies of the last picture, set the **count** parameter with the number of copies you want to reprint"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/print?count=1",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"print"
+									],
+									"query": [
+										{
+											"key": "count",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "2"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"print\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Error - Last Session was not a photo session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/print?count=1",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"print"
+									],
+									"query": [
+										{
+											"key": "count",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "18"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "130"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"print\",\n    \"IsSuccessful\": false,\n    \"ErrorMessage\": \"Cannot print last session as it was not a photo session\"\n}"
+						},
+						{
+							"name": "Error - No previous session since app was started",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/print?count=1",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"print"
+									],
+									"query": [
+										{
+											"key": "count",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "1"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"print\",\n    \"IsSuccessful\": false,\n    \"ErrorMessage\": \"There is no image to reprint\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Share over Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/share/email?email=test@test.com",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"share",
+								"email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test@test.com"
+								}
+							]
+						},
+						"description": "Share the last session by emailing it to a specific email address."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/share/email?email=me@me.com",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"share",
+										"email"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "me@me.com"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"share/email\",\r\n    \"IsSuccessful\": true,\r\n    \"ErrorMessage\": \"\"\r\n}"
+						},
+						{
+							"name": "Error - No image or video to share",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/share/email?email=me@me.com",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"share",
+										"email"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "me@me.com"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"share/email\",\r\n    \"IsSuccessful\": false,\r\n    \"ErrorMessage\": \"There is no previous session with an image or video to share since the app started\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Share over SMS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/share/sms?phone=5555555555",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"share",
+								"sms"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "5555555555"
+								}
+							]
+						},
+						"description": "Share the last session by sending an sms message to a specific phone number. Phone number should only contain digits and no formatting."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/share/sms?phone=5555555555",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"share",
+										"sms"
+									],
+									"query": [
+										{
+											"key": "phone",
+											"value": "5555555555"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"share/sms\",\r\n    \"IsSuccessful\": true,\r\n    \"ErrorMessage\": \"\"\r\n}"
+						},
+						{
+							"name": "Error - No image or video to share",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/share/sms?phone=5555555555",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"share",
+										"sms"
+									],
+									"query": [
+										{
+											"key": "phone",
+											"value": "5555555555"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"ApiVersion\": 1,\r\n    \"Command\": \"share/sms\",\r\n    \"IsSuccessful\": false,\r\n    \"ErrorMessage\": \"There is no previous session with an image or video to share since the app started\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Lock Screen",
+			"item": [
+				{
+					"name": "Show Lockscreen",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/lockscreen/show",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"lockscreen",
+								"show"
+							]
+						},
+						"description": "Show the lock screen with preset message."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/show/lockscreen",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"show",
+										"lockscreen"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "7"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"lockscreen/show\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Error - No PIN configured",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/lockscreen/show",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"lockscreen",
+										"show"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "6"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"lockscreen/show\",\n    \"IsSuccessful\": false,\n    \"ErrorMessage\": \"The Lock Screen requires a security PIN configured in the app settings\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Exit Lockscreen",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{baseUrl}}:{{port}}/api/lockscreen/hide",
+							"protocol": "http",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"lockscreen",
+								"hide"
+							]
+						},
+						"description": "Exit the lock screen"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/lockscreen/exit",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"lockscreen",
+										"exit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "8"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"lockscreen/exit\",\n    \"IsSuccessful\": true,\n    \"ErrorMessage\": \"\"\n}"
+						},
+						{
+							"name": "Error - Lock screen was not showing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{baseUrl}}:{{port}}/api/lockscreen/exit",
+									"protocol": "http",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"lockscreen",
+										"exit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Pipeline-Index",
+									"value": "9"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Griffin.Framework (http://github.com/jgauffin/griffin.framework)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "123"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ApiVersion\": 1,\n    \"Command\": \"lockscreen/exit\",\n    \"IsSuccessful\": false,\n    \"ErrorMessage\": \"The booth is not showing the Lock Screen\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Show and hide the dslrBooth lock screen which stops guests from using the app and displays a custom preset message.\n\nThe lock screen requires a security PIN configured in the booth."
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "IiPWa-O4L3Lxpcqf",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
