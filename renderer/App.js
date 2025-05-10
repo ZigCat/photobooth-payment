@@ -28,12 +28,12 @@ const App = () => {
             console.log("Order created:", orderResponse);
             setQrCode(orderResponse.payment_url);
             setStatus("scanning");
-            const pollingResult = await PaymentService.startPaymentStatusPolling();
-            if (pollingResult.status === "success") {
-                setStatus("paid");
-            } else {
-                throw pollingResult.error;
-            }
+            // const pollingResult = await PaymentService.startPaymentStatusPolling();
+            // if (pollingResult.status === "success") {
+            //     setStatus("paid");
+            // } else {
+            //     throw pollingResult.error;
+            // }
         } catch (error) {
             console.error('Payment initiation failed:', error);
             setErrorMessage(error.message || "Неизвестная ошибка при обработке платежа");
@@ -115,7 +115,7 @@ const App = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 20,
+            marginTop: 40,
         },
         payButton: {
             width: 300,
@@ -135,13 +135,13 @@ const App = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 50,
+            marginTop: 20,
             marginBottom: 20
         },
         qrText: {
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: 'bold',
-            marginBottom: 20
+            marginBottom: 10
         },
         qrImage: {},
         messageContainer: {
@@ -187,10 +187,12 @@ const App = () => {
 
     return (
         status === "idle" ? (
-            <View>
-                <Text style={styles.companyName}>Photobooth</Text>
-                <Selector title={"Выберите количество снимков"} value={photo} setValue={setPhoto}/>
-                <Selector title={"Выберите количество копий"} value={copy} setValue={setCopy}/>
+            <View style={{marginTop: 20}}>
+                {/* <Text style={styles.companyName}>Photobooth</Text> */}
+                <View style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
+                    <Selector title={"Выберите количество снимков"} value={photo} setValue={setPhoto}/>
+                    <Selector title={"Выберите количество копий"} value={copy} setValue={setCopy}/>
+                </View>
                 <View style={styles.payContainer}>
                     <TouchableOpacity style={styles.payButton} onPress={handlePayment}>
                         <Text style={styles.payText}>Оплатить</Text>
@@ -203,10 +205,6 @@ const App = () => {
             <View style={styles.qrContainer}>
                 <Text style={styles.qrText}>Kaspi QR</Text>
                 {qrCode && <QRCode style={styles.qrImage} value={qrCode} size={200}/>}
-                {/* <Image
-                    source={require('./assets/kaspi.png')}
-                    style={{ width: 40, height: 40, marginTop: 20, resizeMode: 'contain' }}
-                /> */}
             </View>
         ) : status === "countdown" ? (
             <View style={styles.messageContainer}>

@@ -28,7 +28,7 @@ const initiatePayment = async (serviceDetails) => {
   //   console.error('Payment initiation failed:', error);
   //   throw error;
   // }
-  await delay(2000);
+  await delay(100);
   return {payment_url: 'https://github.com', id: '12345'};
 };
 
@@ -71,7 +71,7 @@ const startPaymentStatusPolling = async () => {
   //   }, config.pollingInterval);
   // });
   await delay(3000);
-  return { status: "success", data: { status: "paid" } };
+  return { status: "error", error: new Error('Payment timeout: exceeded maximum polling attempts') };
 };
 
 const checkPaymentStatus = async () => {
