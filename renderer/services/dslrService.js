@@ -7,7 +7,7 @@ const startPhotoSession = async() => {
         console.log('Starting photo session');
         let res = await dslrApi.startPhotoSession();
         console.log('Photo session response:', res);
-        if(res && res.data.isSuccessful === true){
+        if(res.isSuccessful === true){
             console.log('Photo session started successfully');
             return { status: 'success' };
         } else {
