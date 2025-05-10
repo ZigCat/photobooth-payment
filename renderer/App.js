@@ -28,12 +28,12 @@ const App = () => {
             console.log("Order created:", orderResponse);
             setQrCode(orderResponse.payment_url);
             setStatus("scanning");
-            // const pollingResult = await PaymentService.startPaymentStatusPolling();
-            // if (pollingResult.status === "success") {
-            //     setStatus("paid");
-            // } else {
-            //     throw pollingResult.error;
-            // }
+            const pollingResult = await PaymentService.startPaymentStatusPolling();
+            if (pollingResult.status === "success") {
+                setStatus("paid");
+            } else {
+                throw pollingResult.error;
+            }
         } catch (error) {
             console.error('Payment initiation failed:', error);
             setErrorMessage(error.message || "Неизвестная ошибка при обработке платежа");
