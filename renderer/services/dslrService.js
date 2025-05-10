@@ -5,8 +5,15 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startPhotoSession = async() => {
     try {
         console.log('Starting photo session');
-        await dslrApi.startPhotoSession();
-        return { status: 'success' };
+        let res = await dslrApi.startPhotoSession();
+        console.log('Photo session response:', res);
+        if(res.data.isSuccessful === true){
+            console.log('Photo session started successfully');
+            return { status: 'success' };
+        } else {
+            throw new Error('Photo session failed to start');
+        }
+        
     } catch (error) {
         console.error('Error starting photo session:', error);
         throw error;
