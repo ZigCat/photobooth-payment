@@ -20,7 +20,7 @@ const App = () => {
         setStatus("loading");
         try {
             const serviceDetails = {
-                serviceName: "Photo Booth Session",
+                serviceName: "Photo",
                 amount: config.sessionPrice,
                 merchantOrderId: `photobooth-${Date.now()}`
             };
@@ -45,13 +45,13 @@ const App = () => {
         setStatus("loading");
         try {
             const serviceDetails = {
-                serviceName: "Photo Print Copies",
+                serviceName: "Сделать копии",
                 amount: config.copyPrice * copy,
                 merchantOrderId: `print-${Date.now()}`
             };
             const orderResponse = await PaymentService.initiatePayment(serviceDetails);
             console.log("Order created:", orderResponse);
-            setQrCode(orderResponse.payment_url);
+            setQrCode(orderResponse.url);
             setStatus("scanning");
             const pollingResult = await PaymentService.startPaymentStatusPolling();
             if (pollingResult.status === "success") {
