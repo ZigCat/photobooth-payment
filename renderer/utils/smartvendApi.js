@@ -2,15 +2,20 @@ import axios from 'axios';
 import config from '../config/config';
 
 const api = {
-    async request(method, endpoint, data = null, params = {}) {
+    async request(method, endpoint, data = JSON.stringify({}), params = {}) {
       try {
-        const requestParams = { ...params, api_key: config.smartVendApiKey };
+        const requestParams = { ...params };
         
         const response = await axios({
           method,
-          url: `${config.smartVendBaseUrl}${endpoint}`,
+          url: `${config.proxyBaseUrl}/api/payments${endpoint}`,
           data: data,
-          params: requestParams
+          params: requestParams,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'x-proxy-key': config.proxyApiKey,
+          }
         });
         
         return response.data;

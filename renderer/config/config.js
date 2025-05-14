@@ -1,11 +1,13 @@
 export default{
-  smartVendBaseUrl: process.env.SMARTVEND_BASE_URL,
-  smartVendApiKey: process.env.SMARTVEND_API_KEY,
+  proxyBaseUrl: process.env.BASE_URL,
+  proxyApiKey: process.env.PROXY_API_KEY,
   dslrBaseUrl: process.env.DSLR_BASE_URL,
   dslrPassword: process.env.DSLR_PASSWORD,
-  pollingInterval: 5000,
-  maxPollingAttempts: 60,
+  pollingInterval: 2000,
+  maxPollingAttempts: 5,
   preSessionDelay: 5000,
   sessionDuration: 5000,
-  printDuration: 5000
+  printDuration: 5000,
+  copyPrice: 5,
+  sessionPrice: 2
 };
