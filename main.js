@@ -1,3 +1,6 @@
+const { app, screen, BrowserWindow } = require('electron');
+const path = require('path');
+
 function createWindow() {
   const display = screen.getPrimaryDisplay();
   const screenWidth = display.bounds.width;
