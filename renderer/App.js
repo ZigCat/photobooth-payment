@@ -127,7 +127,7 @@ const App = () => {
             backgroundColor: '#212121',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: 20,
+            padding: 10,
         },
         inner:{
             display: 'flex',
@@ -141,7 +141,7 @@ const App = () => {
             flexDirection: 'row',
             justifyContent: 'right',
             alignItems: 'center',
-            width: '70%',
+            width: '65%',
             marginRight: 70
         },
         payButton: {
@@ -221,9 +221,9 @@ const App = () => {
             {status === "idle" ? (
                 <View style={styles.inner}>
                     <View style={styles.action}>
-                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 200, height: 200 }}/>
+                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 180, height: 180 }}/>
                         <StartButton onPress={handleStartSession}/>
-                        <Image source={require('./assets/blf_logo.png')} style={{ width: 200, height: 128 }}/>
+                        <Image source={require('./assets/blf_logo.png')} style={{ width: 180, height: 115}}/>
                     </View>
                     <View>
                         <Selector title={"Сделать копии"} value={copy} setValue={setCopy}/>
