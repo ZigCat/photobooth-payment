@@ -17,9 +17,17 @@ const StartButton = ({ onPress }) => {
             resizeMode: 'contain',
             tintColor: '#212121',
         },
+        label:{
+            color: '#f0f0f0',
+            fontWeight: 'bold',
+            fontSize: 30,
+            marginBottom: 10,
+            fontFamily: 'Arial',
+        }
     });
     return(
-        <View style={{width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between'}}>
+            <View style={styles.label}>{'Нажми для фото'}</View>
             <TouchableOpacity onPress={onPress} style={styles.button}>
                 <Image
                     source={require('../assets/instagram.svg')} style={styles.icon}/>

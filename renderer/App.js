@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native-web';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native-web';
 import { QRCode } from 'react-qrcode-logo';
 import config from './config/config';
 import Selector from './components/Selector';
@@ -134,7 +134,15 @@ const App = () => {
             flexDirection: 'row',
             justifyContent: 'right',
             alignItems: 'center',
-            width: '100%',
+            width: '95%',
+        },
+        action: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'right',
+            alignItems: 'center',
+            width: '70%',
+            marginRight: 70
         },
         payButton: {
             width: 200,
@@ -212,9 +220,13 @@ const App = () => {
         <View style={styles.body}>
             {status === "idle" ? (
                 <View style={styles.inner}>
-                    <StartButton onPress={handleStartSession}/>
+                    <View style={styles.action}>
+                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 200, height: 200 }}/>
+                        <StartButton onPress={handleStartSession}/>
+                        <Image source={require('./assets/blf_logo.png')} style={{ width: 200, height: 128 }}/>
+                    </View>
                     <View>
-                        <Selector title={"Печать копий последней сессии"} value={copy} setValue={setCopy}/>
+                        <Selector title={"Сделать копии"} value={copy} setValue={setCopy}/>
                         <View style={{
                             display: 'flex',
                             justifyContentlerinde: 'center',
