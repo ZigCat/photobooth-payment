@@ -214,9 +214,9 @@ const App = () => {
             {status === "idle" ? (
                 <View style={styles.inner}>
                     <View style={styles.action}>
-                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 180, height: 160 }}/>
+                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 150, height: 133 }}/>
                         <StartButton onPress={handleStartSession}/>
-                        <Image source={require('./assets/blf_logo.png')} style={{ width: 180, height: 115}}/>
+                        <Image source={require('./assets/blf_logo.png')} style={{ width: 150, height: 95}}/>
                     </View>
                     <View>
                         <Selector title={"Сделать копии"} value={copy} setValue={setCopy}/>
