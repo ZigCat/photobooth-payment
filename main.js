@@ -42,27 +42,21 @@ function createWindow() {
     win.focus();
   });
 
-  // win.on('hide', () => {
-  //   win.show();
-  // });
-
   console.log(path.join(__dirname, 'dist', 'index.html'));
   win.loadFile(path.join(__dirname, 'dist', 'index.html'));
 
   dslrListener.dslrEvents.on('session_start', () => {
     console.log('Hiding window on session_start');
-    mainWindow.webContents.send('dslr-event', 'session_start');
+    win.webContents.send('dslr-event', 'session_start');
     win.hide();
   });
 
   dslrListener.dslrEvents.on('session_end', () => {
     console.log('Showing window on session_end');
-    mainWindow.webContents.send('dslr-event', 'session_end');
+    win.webContents.send('dslr-event', 'session_end');
     win.show();
     win.focus();
   });
-
-  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);
