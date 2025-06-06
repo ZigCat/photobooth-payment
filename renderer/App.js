@@ -152,7 +152,8 @@ const App = () => {
         payText: {
             fontSize: 25,
             fontWeight: 'bold',
-            color: '#fff'
+            color: '#fff',
+            fontFamily: 'Arial',
         },
         qrContainer: {
             display: 'flex',
@@ -166,6 +167,7 @@ const App = () => {
             fontWeight: 'bold',
             marginBottom: 10,
             color: '#f0f0f0',
+            fontFamily: 'Arial',
         },
         qrImage: {
             borderRadius: 10,
@@ -180,23 +182,27 @@ const App = () => {
         errorText: {
             fontSize: 25,
             color: '#EE2626',
-            textAlign: 'center'
+            textAlign: 'center',
+            fontFamily: 'Arial',
         },
         successText: {
             fontSize: 25,
             color: '#117E07',
-            textAlign: 'center'
+            textAlign: 'center',
+            fontFamily: 'Arial',
         },
         processingText: {
             fontSize: 25,
             color: '#3FA0E1',
-            textAlign: 'center'
+            textAlign: 'center',
+            fontFamily: 'Arial',
         },
         printingText: {
             fontSize: 25,
             color: '#3FA0E1',
             fontWeight: 'bold',
-            textAlign: 'center'
+            textAlign: 'center',
+            fontFamily: 'Arial',
         }
     });
 
@@ -205,7 +211,7 @@ const App = () => {
             {status === "idle" ? (
                 <View style={styles.inner}>
                     <View style={styles.action}>
-                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 180, height: 180 }}/>
+                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 180, height: 160 }}/>
                         <StartButton onPress={handleStartSession}/>
                         <Image source={require('./assets/blf_logo.png')} style={{ width: 180, height: 115}}/>
                     </View>
