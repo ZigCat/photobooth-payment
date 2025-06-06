@@ -22,7 +22,7 @@ const App = () => {
         try {
             const serviceDetails = {
                 serviceName: "Photo",
-                amount: config.sessionPrice,
+                amount: parseInt(config.sessionPrice, 10),
                 merchantOrderId: `photobooth-${Date.now()}`
             };
             const orderResponse = await PaymentService.initiatePayment(serviceDetails);
@@ -47,7 +47,7 @@ const App = () => {
         try {
             const serviceDetails = {
                 serviceName: "Сделать копии",
-                amount: config.copyPrice * copy,
+                amount: parseInt(config.copyPrice, 10) * copy,
                 merchantOrderId: `print-${Date.now()}`
             };
             const orderResponse = await PaymentService.initiatePayment(serviceDetails);
