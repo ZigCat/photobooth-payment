@@ -51,11 +51,13 @@ function createWindow() {
 
   dslrListener.dslrEvents.on('session_start', () => {
     console.log('Hiding window on session_start');
+    mainWindow.webContents.send('dslr-event', 'session_start');
     win.hide();
   });
 
   dslrListener.dslrEvents.on('session_end', () => {
     console.log('Showing window on session_end');
+    mainWindow.webContents.send('dslr-event', 'session_end');
     win.show();
     win.focus();
   });
