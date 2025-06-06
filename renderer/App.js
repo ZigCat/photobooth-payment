@@ -30,10 +30,10 @@ const App = () => {
             setQrCode(orderResponse.url);
             setStatus("scanning");
             const pollingResult = await PaymentService.startPaymentStatusPolling();
-            if (pollingResult.status !== "success") {
-                throw pollingResult.error;
-            } else {
+            if (pollingResult.status === "success") {
                 DslrService.startPhotoSession();
+            } else {
+                throw pollingResult.error;
             }
         } catch (error) {
             console.error('Payment initiation failed:', error);
