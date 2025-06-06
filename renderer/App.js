@@ -33,7 +33,9 @@ const App = () => {
             if (pollingResult.status === "success") {
                 DslrService.startPhotoSession();
             } else {
-                throw pollingResult.error;
+                setCopy(1);
+                setQrCode(null);
+                setStatus('idle');
             }
         } catch (error) {
             console.error('Payment initiation failed:', error);
