@@ -30,7 +30,7 @@ const initiatePayment = async (serviceDetails) => {
   }
 
   // await delay(100);
-  // return {payment_url: 'https://github.com', id: '12345'};
+  // return {url: 'https://github.com', id: '12345'};
 };
 
 //REMOVE ASYNC FROM THE FUNCTION NAME

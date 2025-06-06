@@ -13,8 +13,6 @@ const App = () => {
     const [copy, setCopy] = useState(1);
     const [qrCode, setQrCode] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [countdown, setCountdown] = useState(null);
-    const [currentPhoto, setCurrentPhoto] = useState(0);
 
     const handleStartSession = async () => {
         setStatus("loading");
@@ -29,10 +27,10 @@ const App = () => {
             setQrCode(orderResponse.url);
             setStatus("scanning");
             const pollingResult = await PaymentService.startPaymentStatusPolling();
-            if (pollingResult.status === "success") {
-                setStatus("paid");
-            } else {
+            if (pollingResult.status !== "success") {
                 throw pollingResult.error;
+            } else {
+                DslrService.startPhotoSession();
             }
         } catch (error) {
             console.error('Payment initiation failed:', error);
@@ -70,54 +68,51 @@ const App = () => {
     };
 
     useEffect(() => {
+        const initializeDslrListener = () => {
+            if (window.dslrAPIReady && window.dslrAPI) {
+                window.dslrAPI.onEvent((eventType) => {
+                    if (eventType === 'session_start') {
+                        console.log('React received DSLR event:', eventType);
+                        setStatus('paid');
+                    } else if (eventType === 'session_end') {
+                        console.log('React received DSLR event:', eventType);
+                        setStatus('completed');
+                    }
+                });
+            } else {
+                setTimeout(initializeDslrListener, 100);
+            }
+        };
+        
+        initializeDslrListener();
+        if (window.dslrAPI && window.dslrAPI.onMainLog) {
+        window.dslrAPI.onMainLog((logData) => {
+            const style = logData.level === 'error' ? 'color: red' : 
+                         logData.level === 'success' ? 'color: green' : 
+                         'color: blue';
+            console.log(`%c[MAIN] ${logData.message}`, style);
+        });
+    }
+    }, []);
+
+    useEffect(() => {
         let timer;
         if (status === "error") {
             timer = setTimeout(() => {
                 setStatus("idle");
                 setErrorMessage(null);
                 setQrCode(null);
-                setCurrentPhoto(0);
-                setCountdown(null);
                 setCopy(1);
-            }, 5000);
-        } else if (status === "paid") {
-            setCurrentPhoto(1);
-            setCountdown(config.preSessionDelay / 1000);
-            setStatus("countdown");
-        } else if (status === "countdown" && countdown !== null) {
-            if (countdown > 0) {
-                timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-            } else {
-                setStatus("processing");
-                DslrService.startPhotoSession()
-                    .then(() => {
-                        setStatus("session");
-                        timer = setTimeout(() => {
-                            setStatus("completed");
-                            timer = setTimeout(() => {
-                                setStatus("idle");
-                                setQrCode(null);
-                                setCurrentPhoto(0);
-                                setCopy(1);
-                            }, 5000);
-                        }, config.sessionDuration);
-                    })
-                    .catch(error => {
-                        console.error('Photo session failed:', error);
-                        setErrorMessage(error.message || "Ошибка при выполнении фотосессии");
-                        setStatus("error");
-                    });
-            }
+            }, 3000);
         } else if (status === "completed") {
             timer = setTimeout(() => {
                 setStatus("idle");
                 setQrCode(null);
-                setCurrentPhoto(0);
                 setCopy(1);
-            }, 5000);
+            }, 3000);
         }
         return () => clearTimeout(timer);
-    }, [status, countdown, copy]);
+    }, [status]);
 
     const styles = StyleSheet.create({
         body:{
@@ -197,17 +192,6 @@ const App = () => {
             color: '#3FA0E1',
             textAlign: 'center'
         },
-        countdownText: {
-            fontSize: 25,
-            fontWeight: 'bold',
-            color: '#3FA0E1',
-            textAlign: 'center'
-        },
-        sessionText: {
-            fontSize: 25,
-            color: '#3FA0E1',
-            textAlign: 'center'
-        },
         printingText: {
             fontSize: 25,
             color: '#3FA0E1',
@@ -229,7 +213,7 @@ const App = () => {
                         <Selector title={"Сделать копии"} value={copy} setValue={setCopy}/>
                         <View style={{
                             display: 'flex',
-                            justifyContentlerinde: 'center',
+                            justifyContent: 'center',
                             alignItems: 'center'
                         }}>
                             <TouchableOpacity style={styles.payButton} onPress={handlePrintCopies}>
@@ -248,19 +232,9 @@ const App = () => {
                         value={qrCode} 
                         size={200}/>}
                 </View>
-            ) : status === "countdown" ? (
+            ) : status === "paid" ? (
                 <View style={styles.messageContainer}>
-                    <Text style={styles.countdownText}>
-                        Подготовьтесь к съемке: {countdown}
-                    </Text>
-                </View>
-            ) : status === "processing" ? (
-                <View style={styles.messageContainer}>
-                    <Text style={styles.processingText}>Начинается фотосессия {currentPhoto}...</Text>
-                </View>
-            ) : status === "session" ? (
-                <View style={styles.messageContainer}>
-                    <Text style={styles.sessionText}>Идет фотосессия {currentPhoto}...</Text>
+                    <Text style={styles.processingText}>Процесс съемки начался!</Text>
                 </View>
             ) : status === "printing" ? (
                 <View style={styles.messageContainer}>
@@ -268,7 +242,7 @@ const App = () => {
                 </View>
             ) : status === "completed" ? (
                 <View style={styles.messageContainer}>
-                    <Text style={styles.successText}>Операция завершена успешно!</Text>
+                    <Text style={styles.successText}>Фотосессия завершена успешно!</Text>
                 </View>
             ) : status === "error" ? (
                 <View style={styles.messageContainer}>

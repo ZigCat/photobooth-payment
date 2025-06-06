@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Image, StyleSheet, View } from 'react-native-web';
+import { TouchableOpacity, Image, StyleSheet, View, Text } from 'react-native-web';
 
 const StartButton = ({ onPress }) => {
     const styles = StyleSheet.create({
@@ -27,7 +27,7 @@ const StartButton = ({ onPress }) => {
     });
     return(
         <View style={{width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between'}}>
-            <View style={styles.label}>{'Нажми для фото'}</View>
+            <Text style={styles.label}>Нажми для фото</Text>
             <TouchableOpacity onPress={onPress} style={styles.button}>
                 <Image
                     source={require('../assets/instagram.svg')} style={styles.icon}/>

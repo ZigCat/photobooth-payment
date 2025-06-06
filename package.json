@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "electron": "electron .",
+    "electron": "electron . --enable-logging",
     "dist": "electron-builder"
   },
   "build": {

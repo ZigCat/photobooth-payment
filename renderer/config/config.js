@@ -8,6 +8,6 @@ export default{
   preSessionDelay: 5000,
   sessionDuration: 5000,
   printDuration: 5000,
-  copyPrice: 1000,
-  sessionPrice: 1500
+  copyPrice: 2,
+  sessionPrice: 2
 };

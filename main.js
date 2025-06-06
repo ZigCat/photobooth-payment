@@ -1,6 +1,10 @@
 const { app, screen, BrowserWindow } = require('electron');
 const path = require('path');
 
+console.log('Initializing DSLR listener...');
+const dslrListener = require('./renderer/services/dslrListener');
+console.log('DSLR listener initialized');
+
 function createWindow() {
   const display = screen.getPrimaryDisplay();
   const screenWidth = display.bounds.width;
@@ -19,7 +23,9 @@ function createWindow() {
     focusable: true,
     fullscreenable: false,
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
+      contextIsolation: true,
     },
   });
 
@@ -36,12 +42,25 @@ function createWindow() {
     win.focus();
   });
 
-  win.on('hide', () => {
-    win.show();
-  });
+  // win.on('hide', () => {
+  //   win.show();
+  // });
 
   console.log(path.join(__dirname, 'dist', 'index.html'));
   win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+
+  dslrListener.dslrEvents.on('session_start', () => {
+    console.log('Hiding window on session_start');
+    win.hide();
+  });
+
+  dslrListener.dslrEvents.on('session_end', () => {
+    console.log('Showing window on session_end');
+    win.show();
+    win.focus();
+  });
+
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);
