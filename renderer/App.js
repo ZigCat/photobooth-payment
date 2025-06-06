@@ -14,6 +14,9 @@ const App = () => {
     const [qrCode, setQrCode] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
 
+    console.log(config.copyPrice);
+    console.log(config.sessionPrice);
+
     const handleStartSession = async () => {
         setStatus("loading");
         try {
