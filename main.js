@@ -2,7 +2,7 @@ const { app, screen, BrowserWindow } = require('electron');
 const path = require('path');
 
 console.log('Initializing DSLR listener...');
-const dslrListener = require('./renderer/services/dslrListener');
+const dslrListener = require('./dslrListener');
 console.log('DSLR listener initialized');
 
 function createWindow() {
