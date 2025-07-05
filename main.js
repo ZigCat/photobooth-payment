@@ -11,9 +11,10 @@ function createWindow() {
 
   const win = new BrowserWindow({
     width: screenWidth,
-    height: 300,
+    height: 400,
     x: 0,
     y: 0,
+    transparent: true,
     frame: false,
     resizable: false,
     movable: false,

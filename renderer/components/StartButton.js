@@ -4,16 +4,16 @@ import { TouchableOpacity, Image, StyleSheet, View, Text } from 'react-native-we
 const StartButton = ({ onPress }) => {
     const styles = StyleSheet.create({
         button: {
-            width: 150,
-            height: 150,
-            borderRadius: 75,
+            width: 250,
+            height: 250,
+            borderRadius: 125,
             backgroundColor: '#f0f0f0',
             justifyContent: 'center',
             alignItems: 'center',
         },
         icon: {
-            width: 80,
-            height: 80,
+            width: 120,
+            height: 120,
             resizeMode: 'contain',
             tintColor: '#212121',
         },
@@ -27,7 +27,6 @@ const StartButton = ({ onPress }) => {
     });
     return(
         <View style={{width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between'}}>
-            <Text style={styles.label}>Нажми для фото</Text>
             <TouchableOpacity onPress={onPress} style={styles.button}>
                 <Image
                     source={require('../assets/instagram.svg')} style={styles.icon}/>

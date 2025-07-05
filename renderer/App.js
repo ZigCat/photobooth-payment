@@ -124,25 +124,21 @@ const App = () => {
             display: 'flex',
             flex: 1,
             height: '100vh',
-            backgroundColor: '#212121',
             justifyContent: 'center',
             alignItems: 'center',
             padding: 10,
         },
         inner:{
             display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'right',
+            justifyContent: 'center',
             alignItems: 'center',
-            width: '95%',
+            width: '100%',
         },
         action: {
             display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'right',
+            flexDirection: 'column',
+            justifyContent: 'center',
             alignItems: 'center',
-            width: '65%',
-            marginRight: 70
         },
         payButton: {
             width: 200,
@@ -216,12 +212,10 @@ const App = () => {
             {status === "idle" ? (
                 <View style={styles.inner}>
                     <View style={styles.action}>
-                        <Image source={require('./assets/mirror_logo.png')} style={{ width: 150, height: 133 }}/>
                         <StartButton onPress={handleStartSession}/>
-                        <Image source={require('./assets/blf_logo.png')} style={{ width: 150, height: 95}}/>
                     </View>
-                    <View>
-                        <Selector title={"Сделать копии"} value={copy} setValue={setCopy}/>
+                    {/* <View>
+                        <Selector title={"Сделать копии последней сессии"} value={copy} setValue={setCopy}/>
                         <View style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -231,17 +225,16 @@ const App = () => {
                                 <Text style={styles.payText}>Печать</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </View> */}
                 </View>
             ) : status === "loading" ? (
                 <Loader/>
             ) : status === "scanning" ? (
                 <View style={styles.qrContainer}>
-                    <Text style={styles.qrText}>Kaspi QR</Text>
                     {qrCode && <QRCode 
                         style={styles.qrImage} 
                         value={qrCode} 
-                        size={200}/>}
+                        size={250}/>}
                 </View>
             ) : status === "paid" ? (
                 <View style={styles.messageContainer}>
